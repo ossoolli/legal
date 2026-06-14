@@ -95,12 +95,59 @@ export default function RootLayout({
   const lang = params.lang || "ar";
   const t = translations[lang] || translations.ar;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": lang === "ar" ? "المركز القانوني العربي | سيدة القانون — ميسر المومني" : "Arab Legal Center | Lady of Law — Myassar Al-Momani",
+    "description": t.footer.tagline,
+    "url": "https://ossoolli.github.io/legal/",
+    "telephone": "+962 7 7244 3804",
+    "email": "info@law-myassar.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": lang === "ar" ? "شارع السعادة — مجمع أبو دواس — مكتب 501" : "Al-Sa'ada Street — Abu Dawas Complex — Office 501",
+      "addressLocality": lang === "ar" ? "الزرقاء" : "Zarqa",
+      "addressCountry": "JO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "32.0688",
+      "longitude": "36.0850"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Saturday",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://www.facebook.com/myassar.momani/",
+      "https://www.instagram.com/arab_legal_center/",
+      "https://www.linkedin.com/in/myassar-almomani/",
+      "https://www.tiktok.com/@arab_legal_center",
+      "https://www.youtube.com/@ArabLegalCenter"
+    ]
+  };
+
   return (
     <html
       lang={t.langCode}
       dir={t.dir}
       className={`${cairo.variable} ${playfair.variable} ${libre.variable} antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="font-cairo">
         <LoadingScreen />
         <CustomCursor />
