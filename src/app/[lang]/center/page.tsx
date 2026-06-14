@@ -1,9 +1,25 @@
+import { Metadata } from "next";
 import { Locale, translations } from "@/data/translations";
 import SectionDivider from "@/components/ui/SectionDivider";
 
 interface PageProps {
   params: {
     lang: Locale;
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const lang = params.lang || "ar";
+  const t = translations[lang] || translations.ar;
+
+  return {
+    title: lang === "ar" ? "المركز القانوني العربي - رؤيتنا وقيمنا" : "Arab Legal Center - Vision & Values",
+    description: t.center.intro,
+    alternates: {
+      canonical: `/${lang}/center/`,
+    },
   };
 }
 
