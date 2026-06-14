@@ -114,3 +114,7 @@ export default function RootLayout({
     </html>
   );
 }
+
+export function generateStaticParams() {
+  return [{ lang: "ar" }, { lang: "en" }];
+}
