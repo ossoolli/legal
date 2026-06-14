@@ -6,6 +6,7 @@ const repoName = "legal";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
+  trailingSlash: true,
   // Automatically apply basePath and assetPrefix only when building on GitHub Actions
   basePath: isGithubActions ? `/${repoName}` : "",
   typescript: {
