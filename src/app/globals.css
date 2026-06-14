@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --burgundy: #4A1528;
+  --burgundy-hover: #6B2340;
+  --charcoal: #1C1C1C;
+  --cream: #F5EFE6;
+  --rose-gray: #C4A8B0;
+  --white: #FFFFFF;
+  --divider: #E8E0DA;
+}
+
+/* Custom Selection style */
+::selection {
+  background-color: var(--burgundy);
+  color: var(--white);
+}
+
+/* Base style resets */
+html,
+body {
+  background-color: var(--cream);
+  color: var(--charcoal);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--burgundy);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--burgundy-hover);
+}
+
+/* Leaflet Dark Theme Adjustments */
+.leaflet-container {
+  background: var(--charcoal) !important;
+}
+
+.leaflet-tile {
+  filter: grayscale(1) invert(0.9) sepia(0.2) hue-rotate(320deg) brightness(0.9) contrast(1.1) !important;
+}
+
+/* Stagger animations helper */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover effects custom */
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Cursor style overrides */
+body {
+  cursor: default;
+}
+
+/* Custom subtle lines */
+.signature-line {
+  height: 1px;
+  background-color: var(--burgundy);
+  transform-origin: right;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[dir="ltr"] .signature-line {
+  transform-origin: left;
+}
