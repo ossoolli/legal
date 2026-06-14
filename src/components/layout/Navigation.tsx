@@ -33,10 +33,7 @@ export default function Navigation({ lang }: NavigationProps) {
 
   // Helper to resolve localized paths
   const getLocalizedPath = (path: string) => {
-    if (lang === "ar") {
-      return path;
-    }
-    return `/en${path === "/" ? "" : path}`;
+    return `/${lang}${path === "/" ? "" : path}`;
   };
 
   const handleLanguageSwitch = () => {
@@ -49,7 +46,7 @@ export default function Navigation({ lang }: NavigationProps) {
       baseRoute = pathname.slice(3) || "/";
     }
 
-    const newPath = targetLocale === "ar" ? baseRoute : `/en${baseRoute === "/" ? "" : baseRoute}`;
+    const newPath = `/${targetLocale}${baseRoute === "/" ? "" : baseRoute}`;
     router.push(newPath);
   };
 

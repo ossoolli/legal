@@ -13,8 +13,7 @@ export default function LadyOfLawPage({ params }: PageProps) {
   const t = translations[lang];
 
   const getLocalizedPath = (path: string) => {
-    if (lang === "ar") return path;
-    return `/en${path === "/" ? "" : path}`;
+    return `/${lang}${path === "/" ? "" : path}`;
   };
 
   const isRtl = lang === "ar";

@@ -18,8 +18,7 @@ export default function HomePage({ params }: PageProps) {
 
   // Resolve localized links helper
   const getLocalizedPath = (path: string) => {
-    if (lang === "ar") return path;
-    return `/en${path === "/" ? "" : path}`;
+    return `/${lang}${path === "/" ? "" : path}`;
   };
 
   // 4 services to preview on Home
